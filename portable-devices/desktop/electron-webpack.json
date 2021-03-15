@@ -1,5 +1,24 @@
 {
+  "title": "ClockifyApp",
   "renderer": {
-    "sourceDirectory": null
-  }
+    "dll": [],
+    "webpackConfig": "webpack.renderer.additions.js"
+  },
+  "main": {
+    "webpackConfig": "webpack.main.additions.js"
+  },
+  "whiteListedModules": [
+    "antd",
+    "react-redux",
+    "react-fela",
+    "react-helmet",
+    "react-loadable",
+    "react-redux",
+    "react-resizable",
+    "react-router",
+    "react-router-config",
+    "react-router-dom",
+    "react-router-redux",
+    "react-transition-group"
+  ]
 }

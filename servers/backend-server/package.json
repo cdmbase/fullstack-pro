@@ -89,7 +89,7 @@
     "envalid": "^7.0.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "graphql": "^14.7.0",
+    "graphql": "^15.5.0",
     "graphql-bigint": "^1.0.0",
     "graphql-nats-subscriptions": "^1.4.2",
     "graphql-subscriptions": "^1.2.0",

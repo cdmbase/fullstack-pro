@@ -32,6 +32,7 @@
   "dependencies": {
     "@ant-design/compatible": "^1.0.5",
     "@ant-design/icons": "^4.2.2",
+    "@apollo/client": "^3.3.11",
     "@cdm-logger/client": "^5.0.7",
     "@cdm-logger/server": "^6.0.0",
     "@common-stack/client-core": "0.0.251",
@@ -43,18 +44,8 @@
     "@sample-stack/platform-browser": "file:../../packages/sample-platform/browser",
     "antd": "^4.5.2",
     "apollo-cache-inmemory": "^1.6.5",
-    "apollo-client": "^2.6.10",
     "apollo-fetch": "^0.7.0",
-    "apollo-link": "^1.2.13",
-    "apollo-link-batch-http": "^1.2.13",
-    "apollo-link-context": "^1.0.19",
-    "apollo-link-debounce": "^2.1.0",
-    "apollo-link-error": "^1.1.12",
-    "apollo-link-http": "^1.5.16",
-    "apollo-link-logger": "^1.2.3",
-    "apollo-link-retry": "^2.2.15",
-    "apollo-link-schema": "^1.2.4",
-    "apollo-link-ws": "^1.0.19",
+    "apollo-link-logger": "^2.0.0",
     "apollo-logger": "^0.3.3",
     "browser-bunyan": "^1.6.3",
     "classnames": "^2.2.6",
@@ -78,8 +69,7 @@
     "fela-plugin-unit": "^11.6.0",
     "fela-plugin-validator": "^11.6.0",
     "fela-preset-web": "^11.6.0",
-    "graphql": "^14.7.0",
-    "graphql-tag": "^2.11.0",
+    "graphql": "^15.5.0",
     "history": "^4.10.1",
     "immutability-helper": "^3.0.1",
     "inversify": "^5.0.1",
@@ -88,7 +78,6 @@
     "lodash": "^4.17.15",
     "ramda": "^0.26.1",
     "react": "^16.14.0",
-    "react-apollo": "^3.1.5",
     "react-dom": "^16.14.0",
     "react-fela": "11.6.0",
     "react-helmet": "^5.2.1",
@@ -117,30 +106,5 @@
     "electron-builder": "^22.9.1",
     "electron-webpack": "^2.8.2",
     "electron-webpack-ts": "^4.0.1"
-  },
-  "electronWebpack": {
-    "title": "ClockifyApp",
-    "renderer": {
-      "dll": [],
-      "webpackConfig": "webpack.renderer.additions.js"
-    },
-    "main": {
-      "webpackConfig": "webpack.main.additions.js"
-    },
-    "whiteListedModules": [
-      "antd",
-      "react-redux",
-      "react-apollo",
-      "react-fela",
-      "react-helmet",
-      "react-loadable",
-      "react-redux",
-      "react-resizable",
-      "react-router",
-      "react-router-config",
-      "react-router-dom",
-      "react-router-redux",
-      "react-transition-group"
-    ]
   }
 }

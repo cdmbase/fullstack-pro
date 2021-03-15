@@ -69,7 +69,6 @@ let config = {
         'react',
         'react-redux',
         "react-redux",
-        "react-apollo",
         "react-fela",
         "react-helmet",
         "react-loadable",

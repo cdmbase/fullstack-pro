@@ -16,11 +16,9 @@ import {
 import { createClientContainer } from '../config/client.service';
 import modules, { MainRoute } from '../modules';
 import { ConnectedRouter } from 'connected-react-router';
-import RedBox from './RedBox';
-import { ServerError } from './Error';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore, persistReducer } from 'redux-persist';
-
+import { ErrorBoundary } from './ErrorBoundary';
 
 const { apolloClient: client } = createClientContainer();
 
@@ -59,47 +57,30 @@ export interface MainState {
 }
 
 export class Main extends React.Component<any, MainState> {
-  constructor(props: any) {
-    super(props);
-    const serverError: any = window.__SERVER_ERROR__;
-    if (serverError) {
-      this.state = { error: new ServerError(serverError) };
-    } else {
-      this.state = {};
-    }
-  }
-
-  public componentDidCatch(error: ServerError, info: any) {
-    this.setState({ error, info });
-  }
 
   public render() {
     const renderer = createRenderer();
     let persistor = persistStore(store);
     rehydrate(renderer);
-    return this.state.error ? (
-      <RedBox error={this.state.error} />
-    ) : (
-        modules.getWrappedRoot(
-          (
-            <Provider store={store}>
-              <ApolloProvider client={client}>
-                <RendererProvider renderer={renderer}>
-                  <PersistGate persistor={persistor}>
-                    {modules.getWrappedRoot(
-                      (
-                        <ConnectedRouter history={history}>
-                          <MainRoute />
-                        </ConnectedRouter>
-                      ),
-                    )}
-                  </PersistGate>
-                </RendererProvider>
-              </ApolloProvider>
-            </Provider>
-          ),
-        )
-      );
+    return (
+      <ErrorBoundary>
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <RendererProvider renderer={renderer}>
+              <PersistGate persistor={persistor}>
+                {modules.getWrappedRoot(
+                  (
+                    <ConnectedRouter history={history}>
+                      <MainRoute />
+                    </ConnectedRouter>
+                  ),
+                )}
+              </PersistGate>
+            </RendererProvider>
+          </ApolloProvider>
+        </Provider>
+      </ErrorBoundary>
+    );
   }
 }
 
