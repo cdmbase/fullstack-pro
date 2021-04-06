@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import {
     createNavigatorFactory,
     useNavigationBuilder,
@@ -17,7 +17,9 @@ import {
 } from '@react-navigation/drawer/lib/typescript/src/types';
 import { Location, Action } from 'history';
 import { parse, stringify } from 'querystring';
-import { DrawerView } from '@react-navigation/drawer';
+import { DrawerView, createDrawerNavigator } from '@react-navigation/drawer';
+
+import SideBar from "../components/SideBar"
 
 function HistoryNavigator({
     initialRouteName,
@@ -97,21 +99,28 @@ function HistoryNavigator({
                     }
                 }
             }),
-        [navigation, history],
+        [navigation, history, state],
     );
 
-    // React.useEffect(() => {
-    //     if (history.index > state.index) {
-    //         history.go(state.index - history.index);
-    //     } else if (history.index < state.index) {
-    //         const route = state.routes[state.index];
-    //         if (route) {
-    //             history.push(route.params ? `${route.name}?${stringify(route.params)}` : route.name);
-    //         }
-    //     }
-    // }, [state.index, history]);
+/*     React.useEffect(() => {
+        if (history.index > state.index) {
+            debugger
+            const route = state.routes[history.index];
+            if (route) {
+                history.push(route.params ? `${route.name}?${stringify(route.params)}` : route.name);
+            }
+        } else if (history.index < state.index) {
+            debugger
+            const route = state.routes[state.index];
+            if (route) {
+                history.push(route.params ? `${route.name}?${stringify(route.params)}` : route.name);
+            }
+        }
+    }, [state.index, history]); */
 
-    return <DrawerView {...rest} descriptors={descriptors} state={state} navigation={navigation} />;
+    return <DrawerView {...rest} drawerContent={(props) =>
+        <SideBar descriptors={descriptors} state={state} navigation={navigation}/>
+    } descriptors={descriptors} state={state} navigation={navigation} />;
 }
 
 export const drawerHistoryNavigator = createNavigatorFactory<

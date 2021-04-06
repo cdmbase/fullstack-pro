@@ -15,7 +15,7 @@ const { Navigator, Screen } = drawerHistoryNavigator();
 interface INavigationProps {
     routes: IRouteProps[];
     history: History<any>;
-    location: string;
+    location?: string;
     defaultTitle?: string;
     initialRouteName: string;
     screenOptions: any;
@@ -76,7 +76,7 @@ function flattenRoutes(routes?: IRouteProps[], parent?: IScreen): IScreen[] {
 }
 
 export function DrawerNavigation(props: INavigationProps): JSX.Element {
-    const { history, routes, defaultTitle, location, ...rest } = props;
+    const { history, routes, defaultTitle, ...rest } = props;
     console.log('--_DRAIER', location);
     const initialRouteName = props.initial;
 

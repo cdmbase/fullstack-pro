@@ -9,7 +9,7 @@ const Dashboard = () => {
     return(
         <View style={styles.container}>
             <Text>Dashboard Value</Text>
-            <Link to={'/org/hello'}>Hello</Link>
+            <Link to={'/org'}>Calendar</Link>
         </View>
     )
 }

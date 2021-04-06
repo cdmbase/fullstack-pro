@@ -1,16 +1,11 @@
 import * as React from "react";
 import { IMenuPosition } from "@common-stack/client-react";
-import { Feature, FeatureWithRouterFactory } from "@common-stack/client-react";
-import { Hello, CalendarScreen} from "../pages"
-import childModules from "./child-modules"
-
-const features = new Feature(FeatureWithRouterFactory, childModules);
-
-const subRoutes = features.getConfiguredRoutes();
+import { Feature } from "@common-stack/client-react";
+import { Hello} from "../pages"
+//import CounterScreen from "../pages/counter"
 
 export enum CONNECTED_REACT_ROUTER_ROUTES_TYPES {
-    HELLO = "/hello",
-    CALENDAR = "/calendar",
+    TIMER = "/org/hello/timer",
 }
 
 export const getFilteredRoutes = (
@@ -33,29 +28,17 @@ export const counterPageStore: any = [
     {
         exact: true,
         icon: "export",
-        name: "Hello",
-        title: "Hello",
-        component: Hello, 
+        name: "Timer",
+        title: "Timer",
+        component: Hello,
         position: IMenuPosition.MIDDLE,
-        key: CONNECTED_REACT_ROUTER_ROUTES_TYPES.HELLO,
-        path: CONNECTED_REACT_ROUTER_ROUTES_TYPES.HELLO,
-        /* childern: subRoutes */
-    },
-    {
-        exact: true,
-        icon: "export",
-        name: "Calendar",
-        title: "Calendar",
-        component: CalendarScreen,
-        position: IMenuPosition.MIDDLE,
-        key: CONNECTED_REACT_ROUTER_ROUTES_TYPES.CALENDAR,
-        path: CONNECTED_REACT_ROUTER_ROUTES_TYPES.CALENDAR,
-    },
+        key: CONNECTED_REACT_ROUTER_ROUTES_TYPES.TIMER,
+        path: CONNECTED_REACT_ROUTER_ROUTES_TYPES.TIMER,
+    },  
 ];
 
 const selectedRoutesAndMenus = [
-    CONNECTED_REACT_ROUTER_ROUTES_TYPES.HELLO,
-    CONNECTED_REACT_ROUTER_ROUTES_TYPES.CALENDAR,
+    CONNECTED_REACT_ROUTER_ROUTES_TYPES.TIMER,
 ];
 
 // get routes
